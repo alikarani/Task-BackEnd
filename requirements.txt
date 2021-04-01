@@ -1,6 +1,6 @@
 django-cors-headers
-django_filters
-rest_framework
+django-filter
+djangorestframework
 requests
 django-heroku
 django
