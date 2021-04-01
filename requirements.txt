@@ -1,4 +1,4 @@
-corsheaders
+django-cors-headers
 django_filters
 rest_framework
 requests
