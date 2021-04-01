@@ -1,0 +1,7 @@
+corsheaders
+django_filters
+rest_framework
+requests
+django-heroku
+django
+gunicorn

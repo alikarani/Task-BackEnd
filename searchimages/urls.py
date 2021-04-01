@@ -6,5 +6,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('Images/', views.Images.as_view(), name="Images"),
+    path('SearchImages/', views.SearchImages.as_view(), name="Images"),
+    path('FavouriteImages/', views.FavouriteImages.as_view(), name="FavouriteImages"),
 ]+static(settings.MEDIA_URL,document_root=settings)
