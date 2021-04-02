@@ -61,7 +61,9 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://localhost:8080',
-    'https://pythontask-c78e1.web.app/'
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.example\.com$",
 ]
 ROOT_URLCONF = 'pythonchalange.urls'
 
