@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('SearchImages/', views.SearchImages.as_view(), name="Images"),
     path('FavouriteImages/', views.FavouriteImages.as_view(), name="FavouriteImages"),
+    path('GeoLocationList/', views.GeoLocationList.as_view(), name="GeoLocationList"),
 ]+static(settings.MEDIA_URL,document_root=settings)

@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import generics
 import requests
-from .models import FavouriteImage
+from .models import FavouriteImage,list1
 from django.core import serializers
 
 
@@ -53,5 +53,35 @@ class FavouriteImages(APIView):
             'Response': 200,
             'Message': 'Add To Wish List',
             'data':    imageUrl
+        }
+        return Response(message)
+
+class GeoLocationList(APIView):
+
+    def get(self,request, format = None):
+        geolocations = list1.objects.all()
+        geolocationsLatList = []
+        geolocationsLonList = []
+        for i in range(len(geolocations)):
+            geolocationsLatList.append(geolocations[i].latitude)
+            geolocationsLonList.append(geolocations[i].longitude)
+        message = {
+            'Response': 200,
+            'Message': 'Get Search Images',
+            'Data':   {'latitude':geolocationsLatList,'longitude':geolocationsLonList} 
+        }
+        return Response(message)
+
+    def post(self,request, format = None):
+        data = request.data
+        lat = data.get('lat',None)
+        lon = data.get('lon',None)
+        # Add image url to database
+        GeoLoc = list1(latitude=lat,longitude=lon)
+        GeoLoc.save()
+        message = {
+            'Response': 200,
+            'Message': 'Add To Wish List',
+            'data':    { 'lat':lat,'lon':lon}
         }
         return Response(message)
