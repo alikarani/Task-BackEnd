@@ -13,8 +13,6 @@ from django.core import serializers
 def home(request):
     return render(request, 'searchimages/home.html')
 
-# global imagesData
-# imagesData = []
 class SearchImages(APIView):
 
     def get(self,request, format = None):
@@ -35,11 +33,13 @@ class FavouriteImages(APIView):
     def get(self,request, format = None):
         imageList = FavouriteImage.objects.all()
         print(imageList)
-        print(imageList[0].imageUrl)
+        imageUrlList = []
+        for i in range(len(imageList)):
+            imageUrlList.append(imageList[i].imageUrl)
         message = {
             'Response': 200,
             'Message': 'Get Search Images',
-            'Data':   serializers.serialize('json', imageList) 
+            'Data':   imageUrlList 
         }
         return Response(message)
 
